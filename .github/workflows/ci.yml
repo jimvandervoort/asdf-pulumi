@@ -23,7 +23,8 @@ jobs:
           repository: asdf-vm/asdf.git
       - name: Setup asdf and run test
         run: |
-          . ../asdf.git/asdf.sh
+          ls -lah 
+          ls -lah ..
           asdf plugin-add pulumi ./
           asdf plugin-test pulumi ./ 'pulumi version' --asdf-tool-version 1.5.2
         shell: bash
