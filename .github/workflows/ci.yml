@@ -17,14 +17,11 @@ jobs:
     steps:
       - name: clone the plugin repo
         uses: actions/checkout@v2
-      - name: clone asdf
-        uses: actions/checkout@v2
-        with:
-          repository: asdf-vm/asdf.git
       - name: Setup asdf and run test
         run: |
-          ls -lah 
-          ls -lah ..
+          git clone https://github.com/asdf-vm/asdf.git $HOME/asdf
+          . $HOME/asdf/asdf.sh
           asdf plugin-add pulumi ./
           asdf plugin-test pulumi ./ 'pulumi version' --asdf-tool-version 1.5.2
+          asdf plugin-test pulumi ./ 'pulumi version' --asdf-tool-version 1.14.0
         shell: bash
